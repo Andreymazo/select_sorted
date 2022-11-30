@@ -1,11 +1,12 @@
 import csv
-
+from itertools import islice
+from operator import itemgetter
 
 def select_sorted(sort_columns='high', order='asc', limit=10, filename='dump.csv', group_by_name=False):
-
+    high_lst = []
     with open('all_stocks_5yr.csv', 'r', encoding='utf8') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
-        high_lst = []
+
         group_by_name = []
         for row in reader:## Sozdali spisok is 10 elementov
             if len(high_lst) <= limit:
@@ -41,6 +42,18 @@ def select_sorted(sort_columns='high', order='asc', limit=10, filename='dump.csv
                     writer = csv.writer(f)
                     writer.writerow(list(high_lst_revers))
 
+    get_columns = itemgetter('Name', 'open', 'volume', 'close', 'low')
+    Cache = {}
+
+    with open('all_stocks_5yr.csv') as csvfile:
+        reader = csv.DictReader(csvfile)
+        index_1 = 0
+        for row in islice(reader, 10):  # first 10 put into Cache
+            index_2 = 0
+            for i in high_lst:
+                Cache[high_lst[index_2]] = get_columns(row)
+                index_2 += 1
+            index_1 += 1
+        print(Cache, end='\n')
 
 select_sorted(sort_columns='high', limit=20, order='desc', filename='dump.csv', group_by_name=True)
-
