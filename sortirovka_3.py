@@ -20,7 +20,7 @@ def f_2(high):###Минимальное число справа и провер�
                     print(counter, high)
                 elif high[index] > high[index + 1]:
                     index += 1
-                if high[index] == high[index + 1]:
+                elif high[index] == high[index + 1]:
                 #     ost.append(high[index])  ##Дубликат заносим в ost
                 #     high.remove(high[index])  ##Дубликат убираем
                     index += 1
@@ -37,5 +37,11 @@ def f_2(high):###Минимальное число справа и провер�
     return high, result
 
 
-high, g = f_2([1, 3, 4, 11, 7, 9, 2, 4, 8, 6, 1])
+import time
+
+
+start = time.process_time()
+high, g = f_2([11, 11, 9, 9, 7, 4, 8, 6, 4, 3, 9, 9, 2, 1, 1, 11, 11, 9, 9, 7, 4, 8, 6, 4, 3, 9, 9, 2, 1, 1, 11, 11, 9, 9, 7, 4, 8, 6, 4, 3, 9, 9, 2, 1, 1, 11, 11, 9, 9, 7, 4, 8, 6, 4, 3, 9, 9, 2, 1, 1, 11, 11, 9, 9, 7, 4, 8, 6, 4, 3, 9, 9, 2, 1, 11, 11, 3, 4, 11, 7, 9, 9, 2, 4, 8, 6, 1, 9, 9])
+print(time.process_time() - start)
+
 
