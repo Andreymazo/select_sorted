@@ -20,15 +20,15 @@ def f_2(high):###Минимальное число справа и провер�
                     print(counter, high)
                 elif high[index] > high[index + 1]:
                     index += 1
-                # if high[index] == high[index + 1]:
+                if high[index] == high[index + 1]:
                 #     ost.append(high[index])  ##Дубликат заносим в ost
                 #     high.remove(high[index])  ##Дубликат убираем
-                #     index += 1
+                    index += 1
                 #     counter += 1
-                    if counter == 0 and index == len(high)-1:  ##Услловие выхода из прогграммы, весь список отсортирован, ni odnogo izmenenia ne proizoshlo
-                        print(counter, high)
-                        result = True## V etoi tochke dolzhen bit otsortirovannii spisok high i spisok ost s duplicarami
-                        break#No pochemu to go konca nedosortirovivaet
+                if counter == 0 and index == len(high)-1:  ##Услловие выхода из прогграммы, весь список отсортирован, ni odnogo izmenenia ne proizoshlo
+                    print(counter, high)
+                    result = True## V etoi tochke dolzhen bit otsortirovannii spisok high i spisok ost s duplicarami
+                    break#No pochemu to go konca nedosortirovivaet
 
             except IndexError:
                 pass
@@ -37,5 +37,5 @@ def f_2(high):###Минимальное число справа и провер�
     return high, result
 
 
-high, g = f_2([1, 3, 11, 7, 9, 2, 4, 8, 6])
+high, g = f_2([1, 3, 4, 11, 7, 9, 2, 4, 8, 6, 1])
 
